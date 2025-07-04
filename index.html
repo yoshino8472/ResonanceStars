@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <link href="./src/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+  <!-- アプリ設定 -->
+  <meta name="theme-color" content="#3a415c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+    
+  <!-- フォント -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <title>Resonance Stars</title>
+</head>
+<body class="bg-gray-800 w-full text-white flex items-center justify-center">
+  <div id="app-container" class="flex flex-col items-center justify-center">
+    <!-- タイトル画面 -->
+    <section id="title-screen" class="screen active flex flex-col items-center justify-between w-full h-full py-4">
+      <div class="flex-grow flex flex-col justify-between items-center w-full">
+        <div></div> <!-- 上のスペーサー -->
+        <div class="text-center">
+          <h1 class="text-4xl font-raleway">Resonance Stars</h1>
+          <button id="go-to-select" class="px-6 py-2 rounded underline">はじめる</button>
+          <div id="error-message" class="hidden error-message">
+            このアプリはTextAliveホストに対応していません
+          </div>
+        </div>
+        <div class="flex justify-center w-full">
+          <img src="./assets/miku_default.png" alt="ミク" class="w-1/2">
+        </div>
+      </div>
+      <footer class="w-full text-center py-2">
+        <p class="text-sm"><a href="#" id="show-credits" class="underline text-gray-300">クレジット</a></p>
+      </footer>
+    </section>
+
+    <!-- 曲選択画面 -->
+    <section id="select-screen" class="screen flex flex-col items-center justify-center w-full h-full px-3">
+      <header class="screen-title">
+        <h2>曲を選んでね</h2>
+      </header>
+      <ul id="song-list" class="space-y-3 overflow-y-auto flex-grow w-full"></ul>
+      <footer class="w-full py-2">
+        <button id="go-to-howto" class="btn-primary w-full">遊び方を見る</button>
+      </footer>
+      
+      <!-- Tailwind safelist用ダミー (非表示) -->
+      <div class="hidden" aria-hidden="true">
+        <ul>
+          <li id="dummy-song-li" class="btn-song">
+            <div id="dummy-song-title" class="text-xl font-semibold"></div>
+            <div id="dummy-song-artist" class="text-sm"></div>
+          </li>
+        </ul>
+      </div>    
+    </section>
+
+    <!-- 遊び方画面 -->
+    <section id="howto-screen" class="screen flex flex-col items-center justify-center w-full h-full px-3">
+      <header class="screen-title">
+        <h2>遊び方</h2>
+      </header>
+      <div class="flex-grow w-full overflow-y-auto px-2 font-zen-maru space-y-6">
+        <div>
+          <p class="mb-2">曲を選ぶと、曲の再生に合わせて星が瞬き、歌詞が表示されます。</p>
+        </div>
+        
+        <div>
+          <p class="mb-2">歌詞のなかから好きな言葉を選んで、作る星座の名前を決めましょう。</p>
+          <div class="flex justify-center my-3">
+            <img src="./assets/how-to-play-selectName.png" alt="星座の名前を選ぶ" class="w-4/5 max-w-md rounded border border-white border-opacity-20">
+          </div>
+          <p class="mb-2">星座名として選択できない文字もあります。</p>
+          <p class="mb-2">星座名に反映されないときは別の言葉を選んでみてください。</p>
+          <p class="mb-2">星座の名前は何度でも選びなおすことができます。</p>
+        </div>
+
+        <div>
+          <p class="mb-2">星の瞬きは、現在鳴っている音や、音量、コードと連動しています。</p>
+          <p class="mb-2">星をクリックすると、星と星をつないで星座を作ることができます。</p>
+          <div class="flex justify-center my-3">
+            <img src="./assets/how-to-play-starLink.gif" alt="星をつなぐ方法1" class="w-4/5 max-w-md rounded border border-white border-opacity-20">
+          </div>
+        </div>
+        
+        <div>
+          <p class="mb-2">「星座にする」ボタンを押すと、あなたの作った星座が保存されます。</p>
+          <div class="flex justify-center my-3">
+            <img src="./assets/how-to-play-makeConstellation.png" alt="星座を作る" class="w-4/5 max-w-md rounded border border-white border-opacity-20">
+          </div>
+        </div>
+        
+        <div>
+          <p class="mb-2">星座はたくさん作ることができます。また新しい星座を作りましょう。</p>
+          <p class="mb-2">曲の再生が終わったあとに、あなたの作った星座が表示されます。</p>
+          <p class="mb-2">あなただけのオリジナルの星座を作ってみましょう。</p>
+        </div>
+      </div>
+      <footer class="w-full py-2">
+        <button id="go-back-select" class="btn-primary w-full">戻る</button>
+      </footer>
+    </section>
+
+    <!-- 曲再生画面 -->
+    <section id="play-screen" class="screen w-full h-full px-3">
+      <div class="flex flex-col items-center w-full h-full">
+        <!-- ローディングオーバーレイ -->
+        <div id="loading-overlay">
+          <div class="loading-content">
+            <div class="loading-spinner">
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-xl font-semibold">星空を作っています</p>
+          </div>
+        </div>
+        
+        <!-- 上部：曲タイトルとヘルプ -->
+        <header class="screen-title flex justify-between items-center w-full">
+          <h2 id="song-title" class="flex-grow text-center"></h2>
+          <button id="play-go-to-howto" class="help-btn">？</button>
+        </header>
+
+        <!-- canvas部分 -->
+        <div class="w-full star-canvas-container">
+          <canvas id="star-canvas" class="w-full aspect-square"></canvas>
+        </div>
+
+        <!-- 星座の名前表示 -->
+        <div class="w-full constellation-name-container flex items-center gap-2 font-zen-maru">
+          <div class="constellation-display flex-1 h-full">
+            <p id="constellation-name" class="text-xl font-semibold"></p>
+          </div>
+          <div class="h-full aspect-square flex items-center justify-center">
+            <img id="miku" src="./assets/miku_default.png" alt="ミク" class="object-contain">
+          </div>
+        </div>
+
+        <!-- 歌詞（2行） -->
+        <div id="lyrics" class="lyrics-container font-zen-maru">
+          <div class="lyrics-line">
+            <div id="lyrics-prev" class="opacity-80 flex items-center"></div>
+          </div>
+          <div class="lyrics-line">
+            <div id="lyrics-current" class="font-semibold flex items-center"></div>
+          </div>
+        </div>
+
+        <!-- シークバー -->
+        <div class="w-full flex items-center justify-center seek-container">
+          <input type="range" id="seek-bar" class="w-full custom-range" min="0" max="100" value="0" disabled />
+        </div>
+
+        <!-- 操作ボタン -->
+        <footer class="flex items-center justify-between w-full gap-2 control-buttons">
+          <button id="play-pause-btn" class="btn-primary flex-1">
+            <i class="fa-solid fa-play"></i>
+          </button>
+          <button id="clear-constellation-btn" class="btn-primary flex-1 disabled">
+            クリア
+          </button>
+          <button id="create-constellation-btn" class="btn-accent flex-2 disabled">
+            星座にする
+          </button>
+        </footer>
+      </div>
+    </section>
+
+    <!-- 終了画面 -->
+    <section id="end-screen" class="screen flex flex-col items-center justify-center w-full h-full px-3">
+      <header class="screen-title">
+        <h2 id="end-title" class="font-m-plus"></h2>
+      </header>
+      <div id="constellation-container" class="flex-grow w-full overflow-y-auto">
+        <ul id="constellation-list" class="space-y-2 px-2"></ul>
+      </div>
+      <footer class="w-full py-2">
+        <button id="restart-button" class="btn-primary w-full">もう一度</button>
+      </footer>
+    </section>
+
+    <!-- クレジット画面 -->
+    <section id="credits-screen" class="screen flex flex-col items-center justify-center w-full h-full px-3">
+      <header class="screen-title">
+        <h2 class="font-m-plus">クレジット</h2>
+      </header>
+      <div class="flex-grow w-full overflow-y-auto px-3 py-4 font-zen-maru">
+        <div class="w-full max-w-lg mx-auto space-y-6">
+          <div class="bg-opacity-10 rounded-lg p-4">
+            <h2 class="text-xl mb-2 font-semibold">Resonance Stars</h3>
+            <p class="mb-1">このアプリは、<a href="https://magicalmirai.com/2025/procon/" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline">初音ミク「マジカルミライ 2025」プログラミング・コンテスト</a>の応募作品です。</p>
+            <p class="mb-1">本作品は<a href="https://piapro.jp/license/pcl/summary"  target="_blank" rel="noopener noreferrer" class="text-blue-300 underline">ピアプロ・キャラクター・ライセンス</a>に基づいてクリプトン・フューチャー・メディア株式会社のキャラクター「初音ミク」を描いたイラストを含みます。</p>
+          </div>
+
+          <div class="bg-opacity-10 rounded-lg p-4">
+            <h3 class="text-xl mb-2 font-semibold">開発者</h3>
+            <p class="mb-1">よしの</p>
+          </div>
+
+          <div class="bg-opacity-10 rounded-lg p-4">
+            <h3 class="text-xl mb-2 font-semibold">イラスト協力</h3>
+            <p class="mb-1">botan</p>
+          </div>       
+          
+          <div class="bg-opacity-10 rounded-lg p-4">
+            <h3 class="text-xl mb-2 font-semibold">使用楽曲</h3>
+            <div id="song-credits-container">
+              <!-- 楽曲情報はJavaScriptで動的に挿入 -->
+            </div>
+          </div>
+          
+          <div class="bg-opacity-10 rounded-lg p-4">
+            <h3 class="text-xl mb-2 font-semibold">使用ライブラリ</h3>
+            <p class="mb-3"> 
+              <a href="https://developer.textalive.jp/" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline">TextAlive App API</a> 
+              (<a href="https://developer.textalive.jp/terms/" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline">利用規約</a>)
+            </p>
+            <p class="mb-1"> <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline">Tailwind CSS</a> (MIT License)</p>
+            <p class="mb-1"> <a href="https://ja.vite.dev/" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline">Vite</a> (MIT License)</p>
+          </div>
+
+          <div class="bg-opacity-10 rounded-lg p-4">
+            <h3 class="text-xl mb-2 font-semibold">使用フォント</h3>
+            <p class="mb-1"> <a href="https://fonts.google.com/specimen/M+PLUS+Rounded+1c" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline">M PLUS Rounded 1c</a> (Open Font License)</p>
+            <p class="mb-1"> <a href="https://fonts.google.com/specimen/Quicksand" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline">Quicksand</a> (Open Font License)</p>
+            <p class="mb-1"> <a href="https://fonts.google.com/specimen/Raleway" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline">Raleway</a> (Open Font License)</p>
+            <p class="mb-1"> <a href="https://fonts.google.com/specimen/Zen+Maru+Gothic" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline">Zen Maru Gothic</a> (Open Font License)</p>
+          </div>
+
+          <div class="bg-opacity-10 rounded-lg p-4">
+            <h3 class="text-xl mb-2 font-semibold">使用素材</h3>
+            <p class="mb-1"> <a href="https://icooon-mono.com/" target="_blank" rel="noopener noreferrer" class="text-blue-300 underline">icooon-mono</a> (フリー利用可) </p>
+          </div>
+        </div>
+      </div>
+      <footer class="w-full py-2">
+        <button id="credits-back" class="btn-primary w-full">戻る</button>
+      </footer>
+    </section>
+
+  </div>
+
+  <!-- 音源 -->
+  <div id="media" hidden></div>
+    
+  <!-- スクリプト -->
+  <script type="module" src="./src/scripts/main.js"></script>
+</body>
+</html>
