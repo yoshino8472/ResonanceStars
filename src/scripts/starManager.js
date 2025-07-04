@@ -128,7 +128,7 @@ export function initStarManager() {
     for (let col = 0; col < COLS; col++) {
       let x = ((col + 0.5) * width) / COLS, y = ((row + 0.5) * height) / ROWS;
       x += (Math.random() * 0.6 - 0.3) * (width / COLS);
-      y += (Math.random() * 0.6 - 0.3) * (height / ROWS);
+      y += (Math.random() * 0.8 - 0.4) * (height / ROWS);
       const note = `n${noteNumber++}`;
       const star = new Star({ xRatio: x / width, yRatio: y / height, note, createdAt: performance.now() });
       star.isVisible = true; star.opacity = 0.0; star.draw(ctx);
