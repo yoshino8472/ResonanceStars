@@ -21,9 +21,9 @@ TextAlive APIを利用した楽曲再生機能を組み込み、楽曲の再生�
 
 ## アピールポイント
 ### 投稿者コメント(300字以内)
-Vocaloidの魅力のひとつは、誰もが創作に参加できる文化だと思います。このアプリでも、「誰でも何かを作れる」ことを目指して、歌詞をもとに星座を作る仕組みを取り入れました。
+VOCALOIDの魅力のひとつは、誰もが創作に参加できる文化だと思います。このアプリでも、「誰でも何かを作れる」ことを目指して、歌詞をもとに星座を作る仕組みを取り入れました。
 星の配置は毎回少し変わるので、二度と同じ星座を作ることはできません。その瞬間にしかできない体験を、楽しんでもらえたらと思います。
-曲の再生中に表示される星の瞬きは、事前に音楽を分析した結果を基にしており、曲の音量や、その時になっている音に合わせて表示されます。
+曲の再生中に表示される星の瞬きは、事前に音楽を分析した結果を基にしており、曲の音量や、その時に鳴っている音に合わせて表示されます。
 素敵な楽曲に耳を澄ませながら、星の瞬きにも注目してみてください。
 
 ### 音楽の周波数解析による星空生成
@@ -52,24 +52,28 @@ Vocaloidの魅力のひとつは、誰もが創作に参加できる文化だと
 ## 使用技術・ライブラリ
 ### コア技術
 - HTML5
-- CSS3 (Tailwind CSS)
-- JavaScript (ES6+)
+- CSS3
+- JavaScript (ES2022 以上をサポート)
 - Canvas API
 
 ### 使用ライブラリ
-- **TextAlive App API** (v0.4.0) © AIST（MIT License）  
+- **TextAlive App API** (v0.4.0) 
   https://github.com/TextAliveJp/textalive-app-api
-- **Tailwind CSS** (v4.1.8) © Tailwind Labs（MIT License）  
+- **Tailwind CSS** (v4.1.8)（MIT License）  
   https://github.com/tailwindlabs/tailwindcss
-- **Vite** (v6.3.5) © Evan You（MIT License）  
+- **Vite** (v6.3.5)（MIT License）  
   https://github.com/vitejs/vite
 
 
 ### 開発ツール
-- [Jest](https://jestjs.io/) - テスト用フレームワーク
-- [ESLint](https://eslint.org/) - コード品質管理
-- [ChatGPT](https://chatgpt.com/) - コード支援 
-- [GitHub Copilot](https://github.com/features/copilot) - コード支援 
+- **Jest** - テスト用フレームワーク
+  https://jestjs.io/
+- **ESLint** - コード品質管理
+  https://eslint.org/
+- ChatGPT - コード支援 
+  https://chatgpt.com/
+- GitHub Copilot - コード支援 
+  https://github.com/features/copilot
 
 ## 実行環境の構築
 
@@ -103,11 +107,10 @@ npm -v
    npm run dev
    ```
 
-4. ブラウザで `http://localhost:5173/` にアクセス
+4. ブラウザで http://localhost:5173/ にアクセス
 
 ### ビルド方法
-
-本番用ビルドを作成するには:
+本番用ビルドを作成するには以下のコマンドを実行してください。
 
 ```bash
 npm run build
@@ -118,7 +121,7 @@ npm run build
 ## 動作環境
 
 ### 動作確認済環境
-- デスクトップPC(Windows 10) Google Chrome 138.0.7204.97（Official Build） （64 ビット）
+- デスクトップPC(Windows 10) Google Chrome 138.0.7204.97（Official Build）（64 ビット）
 - HUAWEI nova 5T(EMUI 11.0.0)  Chrome 138.0.7204.63
 
 ### 推奨環境
@@ -126,7 +129,7 @@ npm run build
 - **ウィンドウサイズ**: 最小 375x667px、推奨 1920x1080px
 
 ### フォルダ構成
-主要ファイルの配置場所
+主要ファイルの配置場所は、以下の通りです。
 ```
 ResonanceStars/
 ├─public/
