@@ -3,6 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  
+  <!-- CSS読み込み前は非表示 -->
+  <style>body{visibility:hidden;}</style>
+  <!-- CSS読み込み完了後に表示-->
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.visibility = 'visible';
+    });
+  </script>
 
   <link href="./src/style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
