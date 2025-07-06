@@ -321,10 +321,10 @@ export const effects = {
         // エフェクトの終了判定
         if (elapsed >= effect.duration) {
           constellationEffects.splice(i, 1);
-          // エフェクト終了時にフラグをリセット
-          clearConstellationEffects();
           // エフェクト実行中のフラグをリセット
           isCreateConstellationEffect = false;
+          // エフェクト終了時にUIを変更
+          clearConstellationEffects();
           // Mikuの画像を元に戻す
           updateMikuImage();
         }
