@@ -57,7 +57,7 @@ VOCALOIDの魅力のひとつは、誰でも創作に参加できる文化だと
 - Canvas API
 
 ### 使用ライブラリ
-- **TextAlive App API** (v0.4.0) 
+- **TextAlive App API** (v0.4.0)   
   https://github.com/TextAliveJp/textalive-app-api
 - **Tailwind CSS** (v4.1.11)（MIT License）  
   https://github.com/tailwindlabs/tailwindcss
@@ -68,13 +68,13 @@ VOCALOIDの魅力のひとつは、誰でも創作に参加できる文化だと
 
 
 ### 開発ツール
-- **Jest** - テスト用フレームワーク
+- **Jest** - テスト用フレームワーク  
   https://jestjs.io/
-- **ESLint** - コード品質管理
+- **ESLint** - 静的コード解析  
   https://eslint.org/
-- **ChatGPT** - コード支援 
+- **ChatGPT** - コード支援   
   https://chatgpt.com/
-- **GitHub Copilot** - コード支援 
+- **GitHub Copilot** - コード支援   
   https://github.com/features/copilot
 
 ## 実行環境の構築
@@ -183,7 +183,11 @@ ResonanceStars/
 - アイコン素材: [icooon-mono](https://icooon-mono.com/) (フリー利用可)
 
 ### フォント
-- M PLUS Rounded 1c - Google Fonts, [Open Font License (OFL)](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
-- Quicksand - Google Fonts, [Open Font License (OFL)](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
-- Raleway - Google Fonts, [Open Font License (OFL)](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
-- Zen Maru Gothic - Google Fonts, [Open Font License (OFL)](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
+- **M PLUS Rounded 1c** - Google Fonts, [Open Font License (OFL)](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)  
+https://fonts.google.com/specimen/M+PLUS+Rounded+1c
+- **Quicksand** - Google Fonts, [Open Font License (OFL)](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)  
+https://fonts.google.com/specimen/Quicksand
+- **Raleway** - Google Fonts, [Open Font License (OFL)](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)  
+https://fonts.google.com/specimen/Raleway
+- **Zen Maru Gothic** - Google Fonts, [Open Font License (OFL)](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)  
+https://fonts.google.com/specimen/Zen+Maru+Gothic
