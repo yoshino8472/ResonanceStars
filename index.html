@@ -3,8 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  
+  <!-- CSS読み込み前は非表示 -->
+  <style>body{visibility:hidden;}</style>
+  <!-- CSS読み込み完了後に表示-->
+  <script>
+    window.addEventListener('load', () => {
+      document.body.style.visibility = 'visible';
+    });
+  </script>
 
-  <link href="./src/style.css" rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   
   <!-- アプリ設定 -->
@@ -12,6 +21,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" href="/ResonanceStars/favicon.ico">
     
   <!-- フォント -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +29,8 @@
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap" rel="stylesheet">
   
   <title>Resonance Stars</title>
+  <script type="module" crossorigin src="/ResonanceStars/assets/index-Beq06fio.js"></script>
+  <link rel="stylesheet" crossorigin href="/ResonanceStars/assets/index-B7qA7q0s.css">
 </head>
 <body class="bg-gray-800 w-full text-white flex items-center justify-center">
   <div id="app-container" class="flex flex-col items-center justify-center">
@@ -251,6 +263,6 @@
   <div id="media" hidden></div>
     
   <!-- スクリプト -->
-  <script type="module" src="./src/scripts/main.js"></script>
+
 </body>
 </html>
